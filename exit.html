@@ -56,8 +56,13 @@
       z-index: 9999;
     }
     #logout-btn:hover {
-      background: #555555;
+      background: #c72727;
       box-shadow: 0 0 25px #555555;
+    }
+    #logout-btn a {
+      color: white;
+      text-decoration: none;
+      width: 100%;
     }
 
     @keyframes rotate {
@@ -78,10 +83,13 @@
         display: block;
       }
       nav#navbar {
-        display: block;
+        display: none;
       }
       #sidebar {
-        left: 0;
+        right: -250px;
+      }
+      #sidebar.active {
+        right: 0;
       }
       #content-section {
         margin-left: 0;
@@ -101,7 +109,7 @@
         width: 200px;
       }
       #sidebar.active {
-        left: 0;
+        right: 0;
       }
       #content-section {
         margin-left: 0;
@@ -118,6 +126,43 @@
       justify-content: center;
       font-size: 10px;
       margin-left: 380px;
+    }
+
+    /* Sidebar styles */
+    #sidebar {
+      position: fixed;
+      top: 170px;
+      right: -250px;
+      width: 250px;
+      height: calc(100vh - 100px);
+      background: rgb(90, 90, 90);
+      opacity: 90%;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.7);
+      transition: right 0.3s ease;
+      z-index: 1050;
+      padding-top: 1rem;
+    }
+    #sidebar.active {
+      right: 0;
+    }
+    #sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    #sidebar ul li {
+      padding: 1rem 1.5rem;
+    }
+    #sidebar ul li a {
+      color: #e0e0e0;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1rem;
+      display: block;
+      transition: color 0.3s ease;
+    }
+    #sidebar ul li a:hover {
+      color: #df0c0c;
     }
 
   </style>
@@ -171,28 +216,15 @@
       <img src="pic/closed.jpg" alt="closed">
     </div>
 
-    <button id="logout-btn" aria-label="Logout from RUBYRED">Logout</button>
+    <button id="logout-btn" ><a href="index.html">Back</a></button>
   </div>
 
 
 
 
-  <script>
-    (function () {
-      const logoutBtn = document.getElementById("logout-btn");
-
-      // Login removed; no login logic needed
-      // Optional: Remove logout button event or leave it as placeholder
-
-      logoutBtn.addEventListener("click", function () {
-        alert('Logout function removed because login was disabled.');
-      });
-
-    })();
-  </script>
-
+  
 <!--Start of Tawk.to Script-->
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
 (function(){
 var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
@@ -207,7 +239,7 @@ Tawk_API.onLoad = function(){
         name : 'warehouse dep'
     });
 };
-</script>
+</script> -->
 <!--End of Tawk.to Script-->
 
 </body>

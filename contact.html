@@ -58,58 +58,17 @@
             .footer p {
                 font-size: 16px;
             }
-            .social a {
-                font-size: 24px;
-                margin: 0 5px;
-            }
-        }
-
-        /* Sidebar styles */
-        #sidebar {
-            position: fixed;
-            top: 170px;
-            right: -250px;
-            width: 250px;
-            height: calc(100vh - 100px);
-            background: rgb(90, 90, 90);
-            opacity: 90%;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.7);
-            transition: right 0.3s ease;
-            z-index: 1050;
-            padding-top: 1rem;
-        }
-        #sidebar.active {
-            right: 0;
-        }
-        #sidebar ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        #sidebar ul li {
-            padding: 1rem 1.5rem;
-        }
-        #sidebar ul li a {
-            color: #e0e0e0;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1rem;
-            display: block;
-            transition: color 0.3s ease;
-        }
-        #sidebar ul li a:hover {
-            color: #df0c0c;
-        }
-
-        /* Responsive styles for iPad and tablets */
-        @media (max-width: 1024px) {
-            #sidebar {
-                width: 200px;
-            }
-            #sidebar.active {
-                right: 0;
-            }
-        }
+  .social a {
+    font-size: 24px;
+    margin: 0 5px;
+  }
+  .menu-btn {
+    display: block;
+  }
+  nav {
+    display: none;
+  }
+}
     </style>
 </head>
 <body>
@@ -126,13 +85,6 @@
     </ul>
   </nav>
 </header>
-<div id="sidebar">
-  <ul>
-    <li><a href="index.html">Home</a></li>
-    <li><a href="HR.html">HR</a></li>
-    <li><a href="contact.html">Contact Us</a></li>
-  </ul>
-</div>
 
 <div class="contact">
     <div class="location">
@@ -175,16 +127,10 @@
         
         </div>
 
-<script>
-    const menuBtn = document.getElementById('menu-btn');
-    const sidebar = document.getElementById('sidebar');
-    menuBtn.addEventListener('click', function() {
-        sidebar.classList.toggle('active');
-    });
-</script>
+
 
 <!--Start of Tawk.to Script-->
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
 (function(){
 var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
@@ -199,7 +145,7 @@ Tawk_API.onLoad = function(){
         name : 'contact dep'
     });
 };
-</script>
+</script> -->
 <!--End of Tawk.to Script-->
 
 </body>
