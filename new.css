@@ -536,4 +536,8 @@ color: RED;
         margin: 0 9px;
     }
 }
+.footer{
+  position:fixed;
+   bottom:10px;
+  }
 
