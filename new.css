@@ -271,6 +271,7 @@ width: 100%;
     .footer {
         height: 180px;
         padding: 20px 0;
+        width:100%;
     }
     .footer p {
         font-size: 18px;
@@ -537,4 +538,5 @@ color: RED;
         margin: 0 9px;
     }
 }
+
 
