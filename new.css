@@ -418,6 +418,7 @@ color: RED;
     text-align: center;
     padding: 20px 0;
     margin-top: 40px;
+    width: 100%;
 }
 
 .footer img {
@@ -536,8 +537,4 @@ color: RED;
         margin: 0 9px;
     }
 }
-.footer{
-  position:fixed;
-   bottom:10px;
-  }
 
