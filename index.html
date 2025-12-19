@@ -8,254 +8,165 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="icon" href="pic/logooo.png">
     <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #222;
-      min-height: 100vh;
-      padding: 0;
-    }
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #222;
+            min-height: 100vh;
+            padding: 0;
+        }
 
-    .top-section {
-      background-image: url('pic/sewing.jpg');
-      background-size: cover;
-      background-position: center;
-      height: 70vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
+        /* تنسيق قائمة اختيار اللغة */
+        .lang-container {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 2000;
+        }
+        #langSwitcher {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            outline: none;
+        }
 
-    .header {
-      text-align: center;
-      margin-bottom: 40px;
-    }
+        .top-section {
+            background-image: url('pic/sewing.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
 
-    .name h1 {
-      color: #fff;
-      font-size: 2.5rem;
-      margin: 0;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-    }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
 
-    .name span {
-      color: #ff6b6b;
-    }
+        .name h1 {
+            color: #fff;
+            font-size: 2.5rem;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
 
-    .nav ul {
-      list-style: none;
-      padding: 0;
-      margin: 20px 0 0 0;
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-    }
+        .name span {
+            color: #ff6b6b;
+        }
 
-    .nav a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-    }
+        .nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0 0 0;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
 
-    .nav a:hover {
-      color: #ff6b6b;
-    }
+        .nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
 
-    .cards-container {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px;
-      justify-items: center;
-    }
+        .nav a:hover {
+            color: #ff6b6b;
+        }
 
-    .managers-container {
-      max-width: 1200px;
-      margin: 0 auto 20px auto;
-      display: flex;
-      justify-content: center;
-    }
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            justify-items: center;
+        }
 
-    .managers-container .card {
-      width: 395px;
-      height: 200px;
-      perspective: 1000px;
-      cursor: pointer;
-      outline: none;
-      position: relative;
-      margin-top: 30px;
-    }
+        .card {
+            width: 100%;
+            height: 200px;
+            perspective: 1000px;
+            cursor: pointer;
+            outline: none;
+            position: relative;
+        }
 
+        .card-inner {
+            background: linear-gradient(135deg, #444, #222);
+            width: 100%;
+            height: 100%;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.7);
+            transition: transform 1s;
+            transform-style: preserve-3d;
+            will-change: transform;
+            position: relative;
+        }
 
+        .card:hover .card-inner {
+            transform: rotateY(360deg);
+        }
 
-    .card {
-      width: 100%;
-      height: 200px;
-      perspective: 1000px;
-      cursor: pointer;
-      outline: none;
-      position: relative;
-    }
+        .card-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            font-size: 1.5rem;
+            font-weight: bold;
+            user-select: none;
+            pointer-events: none;
+            white-space: nowrap;
+            z-index: 10;
+            text-align: center;
+        }
 
-    .card-inner {
-      background: linear-gradient(135deg, #444, #222);
-      width: 100%;
-      height: 100%;
-      border-radius: 15px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.7);
-      transition: transform 1s;
-      transform-style: preserve-3d;
-      will-change: transform;
-      position: relative;
-    }
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .top-section { height: 60vh; padding: 20px; }
+            .name h1 { font-size: 2rem; }
+            .nav ul { flex-direction: column; gap: 15px; margin-top: 20px; }
+            .cards-container { grid-template-columns: 1fr; gap: 15px; padding: 10px; }
+            .card-text { font-size: 1.2rem; }
+            .menu-btn { display: block; }
+            .nav { display: none; }
+        }
 
-    .card:hover .card-inner {
-      transform: rotateY(360deg);
-    }
+        /* Menu button & Sidebar */
+        .menu-btn { display: none; background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer; margin: 10px 0; }
+        #sidebar { position: fixed; top: 200px; right: -250px; width: 250px; height: calc(100vh - 100px); background: rgb(90, 90, 90); opacity: 90%; box-shadow: 2px 0 5px rgba(0, 0, 0, 0.7); transition: right 0.3s ease; z-index: 1050; padding-top: 1rem; }
+        #sidebar.active { right: 0; }
+        #sidebar ul { list-style: none; padding: 0; margin: 0; }
+        #sidebar ul li { padding: 1rem 1.5rem; }
+        #sidebar ul li a { color: #e0e0e0; text-decoration: none; font-weight: 700; font-size: 1rem; display: block; }
 
-    /* Text container absolutely centered and above the card */
-    .card-text {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: #fff;
-      font-size: 1.5rem;
-      font-weight: bold;
-      user-select: none;
-      pointer-events: none;
-      white-space: nowrap;
-      z-index: 10;
-    }
-
-    /* Responsive styles */
-    @media (max-width: 768px) {
-      .top-section {
-        height: 60vh;
-        padding: 20px;
-      }
-      .name h1 {
-        font-size: 2rem;
-      }
-      .nav ul {
-        flex-direction: column;
-        gap: 15px;
-        margin-top: 20px;
-      }
-      .cards-container {
-        grid-template-columns: 1fr;
-        gap: 15px;
-        padding: 10px;
-      }
-      .managers-container .card {
-        width: 100%;
-        max-width: 395px;
-      }
-      .card-text {
-        font-size: 1.2rem;
-      }
-    }
-
-    @media (max-width: 1024px) {
-      .top-section {
-        height: 65vh;
-      }
-      .name h1 {
-        font-size: 2.2rem;
-      }
-      .nav ul {
-        gap: 20px;
-      }
-      .cards-container {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
-        padding: 15px;
-      }
-      .managers-container .card {
-        width: 100%;
-        max-width: 395px;
-      }
-      .card-text {
-        font-size: 1.3rem;
-      }
-    }
-
-    /* Menu button styles */
-    .menu-btn {
-      display: none;
-      background: none;
-      border: none;
-      color: #fff;
-      font-size: 1.5rem;
-      cursor: pointer;
-      margin: 10px 0;
-    }
-
-    /* Sidebar styles */
-    #sidebar {
-      position: fixed;
-      top: 200px;
-      right: -250px;
-      width: 250px;
-      height: calc(100vh - 100px);
-      background: rgb(90, 90, 90);
-      opacity: 90%;
-      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.7);
-      transition: right 0.3s ease;
-      z-index: 1050;
-      padding-top: 1rem;
-    }
-    #sidebar.active {
-      right: 0;
-    }
-    #sidebar ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    #sidebar ul li {
-      padding: 1rem 1.5rem;
-    }
-    #sidebar ul li a {
-      color: #e0e0e0;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 1rem;
-      display: block;
-      transition: color 0.3s ease;
-    }
-    #sidebar ul li a:hover {
-      color: #ff6b6b;
-    }
-
-    /* Responsive styles for mobile */
-    @media (max-width: 768px) {
-      .menu-btn {
-        display: block;
-      }
-      .nav {
-        display: none;
-      }
-      #sidebar {
-        right: -250px;
-      }
-      #sidebar.active {
-        right: 0;
-      }
-    }
-  </style>
+        .footer { text-align: center; padding: 20px; color: white; }
+        .footer img { width: 60px; }
+        .social a { color: white; margin: 0 10px; font-size: 20px; }
+    </style>
 </head>
 <body>
+
+  <div class="lang-container">
+      <select id="langSwitcher">
+          <option value="en">English</option>
+          <option value="ar">العربية</option>
+      </select>
+  </div>
+
   <section class="top-section">
     <div class="header">
-      <div class="logo">
-        <img src="pic/logooo.png" alt="RUBYRED Logo" style="width: 60px; height: 60px; border-radius: 50%; margin-bottom: 10px; display: none;">
-      </div>
       <div class="name"><h1>RUBY<span>RED</span> GARMENT</h1></div>
       <button class="menu-btn" id="menu-btn" aria-label="Open navigation">
         <i class="fas fa-bars"></i>
@@ -263,196 +174,127 @@
       <div class="nav" id="navbar">
         <ul>
           <li><a href="index.html">Home</a></li>
-          <!-- <li><a href="HR.html">HR</a></li> -->
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </div>
     </div>
   </section>
+
   <div id="sidebar">
     <ul>
-          <li><a href="index.html">Home</a></li>
-      <!-- <li><a href="HR.html">HR</a></li> -->
+      <li><a href="index.html">Home</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
   </div>
 
-  </div>
   <div class="cards-container">
-    <div class="card" onclick="location.href='meetingRoom.html'" role="link" tabindex="0" aria-label="Production Department">
+    <div class="card" onclick="location.href='meetingRoom.html'">
       <div class="card-inner"></div>
-      <div class="card-text">MEETING ROOM</div>
+      <div class="card-text" data-en="MEETING ROOM" data-ar="غرفة الاجتماعات">MEETING ROOM</div>
     </div>
 
-    <div class="card" onclick="location.href='enterance.html'" role="link" tabindex="0" aria-label="Finance Department Login">
+    <div class="card" onclick="location.href='enterance.html'">
       <div class="card-inner"></div>
-      <div class="card-text">ENTERANCE PERMISSION</div>
+      <div class="card-text" data-en="ENTERANCE PERMISSION" data-ar="إذن دخول">ENTERANCE PERMISSION</div>
     </div>
 
-    <div class="card" onclick="location.href='exit.html'" role="link" tabindex="0" aria-label="IT Department Login">
+    <div class="card" onclick="location.href='exit.html'">
       <div class="card-inner"></div>
-      <div class="card-text">EXIT PERMISSION</div>
+      <div class="card-text" data-en="EXIT PERMISSION" data-ar="إذن خروج">EXIT PERMISSION</div>
     </div>
 
-    <div class="card" onclick="location.href='late.html'" role="link" tabindex="0" aria-label="Marketing Department Login">
+    <div class="card" onclick="location.href='late.html'">
       <div class="card-inner"></div>
-      <div class="card-text">LATE WITH REASON</div>
+      <div class="card-text" data-en="LATE BECAUSE OF BUSSES" data-ar="تأخير بسبب السياره">LATE BECAUSE OF BUSSES</div>
     </div>
 
-    <div class="card" onclick="location.href='overnight.html'" role="link" tabindex="0" aria-label="Operations Department Login">
+    <div class="card" onclick="location.href='overnight.html'">
       <div class="card-inner"></div>
-      <div class="card-text">OVERNIGHT</div>
+      <div class="card-text" data-en="OVERNIGHT" data-ar="عمل إضافي ليلي">OVERNIGHT</div>
     </div>
 
-    <div class="card" onclick="location.href='nightshift.html'" role="link" tabindex="0" aria-label="Sales Department Login">
+    <div class="card" onclick="location.href='nightshift.html'">
       <div class="card-inner"></div>
-      <div class="card-text">NIGHT SHIFT</div>
+      <div class="card-text" data-en="NIGHT SHIFT" data-ar="وردية ليلية">NIGHT SHIFT</div>
     </div>
-    <div class="card" onclick="location.href='location.html'" role="link" tabindex="0" aria-label="Sales Department Login">
+
+    <div class="card" onclick="location.href='location.html'">
       <div class="card-inner"></div>
-      <div class="card-text">LOCATION</div>
+      <div class="card-text" data-en="LOCATION" data-ar="الموقع">LOCATION</div>
     </div>
-    <div class="card" onclick="location.href='managers.html'" role="link" tabindex="0" aria-label="Sales Department Login">
+
+    <div class="card" onclick="location.href='managers.html'">
       <div class="card-inner"></div>
-      <div class="card-text">MANAGERS ATENDANCE</div>
+      <div class="card-text" data-en="MANAGERS ATTENDANCE" data-ar="حضور المديرين">MANAGERS ATTENDANCE</div>
     </div>
-    <div class="card" onclick="location.href='visitors.html'" role="link" tabindex="0" aria-label="Sales Department Login">
+
+    <div class="card" onclick="location.href='visitors.html'">
       <div class="card-inner"></div>
-      <div class="card-text">VISITORS</div>
+      <div class="card-text" data-en="VISITORS" data-ar="الزوار">VISITORS</div>
     </div>
-    <div class="card" onclick="location.href='left_workers.html'" role="link" tabindex="0" aria-label="Sales Department Login">
+
+    <div class="card" onclick="location.href='left_workers.html'">
       <div class="card-inner"></div>
-      <div class="card-text">LEFT WORKERS</div>
+      <div class="card-text" data-en="LEFT WORKERS" data-ar="العمال المغادرون">LEFT WORKERS</div>
     </div>
-    <div class="card" onclick="location.href='schedule.html'" role="link" tabindex="0" aria-label="Sales Department Login">
+
+    <div class="card" onclick="location.href='schedule.html'">
       <div class="card-inner"></div>
-      <div class="card-text">SHEDULE</div>
+      <div class="card-text" data-en="SCHEDULE" data-ar="الجدول">SCHEDULE</div>
     </div>
-    <div class="card" onclick="location.href='cars.html'" role="link" tabindex="0" aria-label="Sales Department Login">
+
+    <div class="card" onclick="location.href='cars.html'">
       <div class="card-inner"></div>
-      <div class="card-text">CARS</div>
+      <div class="card-text" data-en="CARS" data-ar="السيارات">CARS</div>
     </div>
-    </div>
+  </div>
+
   <div class="footer">
     <img src="pic/logooo.png" alt="">
     <p>RUBYRED GARMENT</p>
     <div class="social">
       <a href="https://www.facebook.com/RUBYREDGARMENTSAE/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-      <a href="https://www.linkedin.com/company/rubyred-garment-manufacturing-s-a-e/posts/?feedView=all" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://www.linkedin.com/company/rubyred-garment-manufacturing-s-a-e/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
       <a href="mailto:hr@rubyredgarment.com"><i class="fas fa-envelope"></i></a>
     </div>
   </div>
 
-  <style>
-    /* Responsive styles for index.html */
-    @media (max-width: 768px) {
-      .top-section {
-        height: 60vh;
-        padding: 20px;
-      }
-      .card-text{
-        font-size: 24px;
-        text-wrap:  wrap; ;
-      }
-      .name h1 {
-        font-size: 2rem;
-      }
-      .nav ul {
-        flex-direction: column;
-        gap: 15px;
-        margin-top: 20px;
-      }
-      .cards-container {
-        grid-template-columns: 1fr;
-        gap: 15px;
-        padding: 10px;
-      }
-      .managers-container .card {
-        width: 100%;
-        max-width: 395px;
-      }
-      .card-text {
-        font-size: 1.2rem;
-      }
-      .footer {
-        padding: 15px 0;
-      }
-      .footer img {
-        width: 50px;
-        height: 50px;
-      }
-      .footer p {
-        font-size: 16px;
-      }
-      .social a {
-        font-size: 20px;
-        margin: 0 6px;
-      }
-    }
-
-    @media (max-width: 1024px) {
-      .top-section {
-        height: 65vh;
-      }
-      .name h1 {
-        font-size: 2.2rem;
-      }
-      .nav ul {
-        gap: 20px;
-      }
-      .cards-container {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
-        padding: 15px;
-      }
-      .managers-container .card {
-        width: 100%;
-        max-width: 395px;
-      }
-      .card-text {
-        font-size: 1.3rem;
-      }
-      .footer {
-        padding: 18px 0;
-      }
-      .footer img {
-        width: 55px;
-        height: 55px;
-      }
-      .footer p {
-        font-size: 17px;
-      }
-      .social a {
-        font-size: 22px;
-        margin: 0 8px;
-      }
-    }
-  </style>
-
   <script>
-  document.querySelectorAll('.card').forEach(card => {
-      card.addEventListener('keydown', e => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          card.click();
-        }
-      });
+    // منطق التبديل بين اللغات للكروت فقط
+    const langSwitcher = document.getElementById('langSwitcher');
+    const cardTexts = document.querySelectorAll('.card-text');
+
+    langSwitcher.addEventListener('change', function() {
+        const selectedLang = this.value;
+        
+        cardTexts.forEach(textElement => {
+            // جلب النص بناءً على اللغة المختارة من الـ attributes
+            const newText = textElement.getAttribute(`data-${selectedLang}`);
+            textElement.textContent = newText;
+        });
+
+        // تغيير اتجاه الصفحة للكروت فقط إذا أردت (اختياري)
+        // if(selectedLang === 'ar') document.querySelector('.cards-container').dir = 'rtl';
+        // else document.querySelector('.cards-container').dir = 'ltr';
     });
 
     // Sidebar toggle
     const menuBtn = document.getElementById('menu-btn');
     const sidebar = document.getElementById('sidebar');
     menuBtn.addEventListener('click', function() {
-      sidebar.classList.toggle('active');
+        sidebar.classList.toggle('active');
     });
 
-
-
-    
+    // Accessibility for cards
+    document.querySelectorAll('.card').forEach(card => {
+        card.addEventListener('keydown', e => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                card.click();
+            }
+        });
+    });
   </script>
 
 </body>
 </html>
-
-
-
